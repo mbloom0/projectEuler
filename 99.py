@@ -9,27 +9,15 @@ import math
 
 with open('base_exp.txt') as file_obj:
     reader_obj=csv.reader(file_obj)
-    
-   
     base_exp = [] 
     for row in reader_obj:
-        base_exp.append(row)
+        base_exp.append(row)    
+#actual answer "i" from this answers list = e**answer[i], log used to reduce number size with properties
+answers = [math.log(int(x[0]))* int(x[1]) for x in base_exp]
+for x in range(len(answers)):
+    answers[x] = (answers[x],x)
 
-    print(base_exp)
-    
-    answers = [math.log(int(x[0]))* int(x[1]) for x in base_exp]
+answers.sort(key=lambda x: x[0])
 
-    #indexVector = np.array(len(answers))
-    #for x in len(answers):
-    #    indexVector[x] = x
-
-    for x in range(len(answers)):
-        answers[x] = (answers[x],x)
-
-    #answers.concatenate(indexVector,axis=1)
-    answers.sort(key=lambda x: x[0])
-
-#
-#    np.sort(answers)
-    print(answers)
-    #Last answer's index +1 = line number = answer to problem
+print(answers)
+#Last answer's index +1 = line number = answer to problem
